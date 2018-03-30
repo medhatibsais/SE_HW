@@ -48,10 +48,10 @@
            <classpath path="C:/sonarqube-7.0/lib/scanner/sonar-scanner-engine-shaded-7.0.jar"/>
            
            
-           <sonar:sonar />
+           
        </taskdef> 
         
-        
+        <sonar:sonar />
     </target>
     
     
