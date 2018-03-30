@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- WARNING: Eclipse auto-generated file.
+              Any modifications will be overwritten.
+              To include a user specific buildfile here, simply create one in the same
+              directory with the processing instruction <?eclipse.ant.import?>
+              as the first entry and export the buildfile again. -->
+    <project basedir="." default="all" xmlns:sonar="antlib:org.sonar.ant">
+    <property environment="env"/>
+    <property name="ECLIPSE_HOME" value="../../eclipse/"/>
+    <property name="debuglevel" value="source,lines,vars"/>
+    <property name="target" value="1.8"/>
+    <property name="source" value="1.8"/>
+    
+    <property name="sonar.jdbc.username" value="sonar"/>
+    <property name="sonar.jdbc.password" value="sonar"/>
+    <property name="sonar.host.url" value="http://localhost:9000"/>
+    
+    
+    
+    <property name="sonar.projectKey" value="org.sonarqube:sonarqube-scanner-ant"/>
+    <property name="sonar.projectName" value="Example of sonarqube for ant usage"/>
+    <property name="sonar.projectVersion" value="1.0"/>
+    <property name="sonar.language" value="java"/>
+    <property name="sonar.sources" value="./adding"/>
+    <property name="sonar.java.binaries" value="./target"/>
+    
+    
+    
+    
+    
+    <path id="adding.classpath">
+        <pathelement location="bin"/>
+    </path>
+        
+
+    <target name="compile">
+  <mkdir dir="bin"/>
+              
+                <javac debug="true" debuglevel="${debuglevel}" destdir="bin" includeantruntime="false" source="${source}" target="${target}">
+            <src path="src"/>
+            <classpath refid="adding.classpath"/>
+        </javac>
+        
+    </target>
+    
+    <target name="sonar" depends="compile">
+       <taskdef uri="antlib:org.sonar.ant" resources="org/sonar/ant/antlib.xml">
+           <classpath path="C:/sonarqube-7.0/lib/scanner/sonar-scanner-engine-shaded-7.0.jar"/>
+           
+           
+           <sonar:sonar />
+       </taskdef> 
+        
+        
+    </target>
+    
+    
+    
+    <target name="all" depends="compile,sonar"/>
+</project>
